@@ -1,17 +1,17 @@
 <template>
   <v-container>
     <v-row justify="space-between">
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <game-ranking :game="game" :defs="defs" v-if="game.players" />
       </v-col>
-      <v-col cols="5">
+      <v-col cols="12" md="5">
         <v-card>
           <v-responsive :aspect-ratio="1 / 1">
-            <game-board v-if="!game.board" :game="game" :defs="defs" />
+            <game-board v-if="game.board" :game="game" :defs="defs" />
           </v-responsive>
         </v-card>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="12" md="3">
         <game-dice :game="game"
           :defs="defs"
         v-if="game.dice" />

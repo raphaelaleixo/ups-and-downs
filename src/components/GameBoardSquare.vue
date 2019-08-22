@@ -4,6 +4,7 @@
     :class="'square--' + square.type"
     :style="{ 'grid-area': 'square' + square.number }"
   >
+    <v-icon color="#ffffff80" class="square__icon" x-large v-if="icon">{{icon}}</v-icon>
     <span v-if="!square.to" class="square__number">{{ squareText }}</span>
     <span v-if="square.to" class="square__number square__to">{{
       square.to
@@ -19,6 +20,18 @@ export default {
   computed: {
     squareText() {
       return this.square.type === "goal" ? "Goal" : this.square.number;
+    },
+    icon() {
+      if (this.square.type==='higher') {
+        return 'mdi-arrow-up-bold'
+      }
+      else if (this.square.type==='lower') {
+        return 'mdi-arrow-down-bold'
+      } else if (this.square.type==='goal') {
+        return 'mdi-flag-checkered'
+      } else {
+        return false
+      }
     }
   }
 };
@@ -54,18 +67,19 @@ export default {
   position: absolute;
 }
 .square--goal {
-  background-image: linear-gradient(45deg, #ffffea 25%, transparent 25%),
-    linear-gradient(-45deg, #ffffea 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #ffffea 75%),
-    linear-gradient(-45deg, transparent 75%, #ffffea 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
   .square__number {
     top: 50%;
     left: 50%;
     font-size: 1.25em;
     transform: translate(-50%, -50%);
   }
+}
+.square__icon {
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.25em;
+  transform: translate(-50%, -50%);
 }
 .square__to {
   color: darken(#00cecb, 20%);
@@ -75,21 +89,8 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 1;
 }
-.square--higher:after,
-.square--lower:after {
-  content: "\1F81D";
-  position: absolute;
-  font-size: 5em;
-  top: 50%;
-  left: 50%;
-  line-height: 1;
-  color: rgba(#fff, 0.3);
-  transform: translate(-50%, -50%);
-}
 .square--lower .square__to {
   color: darken(#ff5e5b, 40%);
 }
-.square--lower:after {
-  content: "\1F81F";
-}
+
 </style>
