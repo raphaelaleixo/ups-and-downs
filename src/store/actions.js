@@ -63,9 +63,8 @@ export default {
       payload.numberOfPlayers,
       gamekey
     );
-    game.set(gameData).then(() => {
-      context.commit("SET_GAME", gameData);
-      context.dispatch("loadGame", gameData.gameId);
-    });
+    await game.set(gameData);
+    context.commit("SET_GAME", gameData);
+    context.dispatch("loadGame", gameData.gameId);
   }
 };
