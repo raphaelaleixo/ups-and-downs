@@ -5,7 +5,7 @@
     :class="'dice--face-' + faceValue"
   >
     <div class="dice__face" v-for="face in 6" :key="face">
-      <v-icon>{{'mdi-dice-'+face}}</v-icon>
+      <v-icon color="#e6cb00">{{ "mdi-dice-" + face }}</v-icon>
     </div>
   </div>
 </template>
@@ -80,88 +80,35 @@ export default {
   line-height: 3em;
   border-radius: 10px;
   border: 1px solid #e6cb00;
-  background: radial-gradient(circle, #e6cb00 0%, darken(#e6cb00, 5%) 100%);
+  backface-visibility: hidden;
   &:nth-child(1) {
-    .dice__dot {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
     transform: rotateY(0deg) translateZ(1.5em);
   }
   &:nth-child(2) {
-    .dice__dot:last-child {
-      bottom: 0.5em;
-      right: 0.5em;
-    }
     transform: rotateY(90deg) translateZ(1.5em);
   }
   &:nth-child(3) {
-    .dice__dot:nth-child(2) {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .dice__dot:last-child {
-      bottom: 0.5em;
-      right: 0.5em;
-    }
     transform: rotateY(180deg) translateZ(1.5em);
   }
   &:nth-child(4) {
-    .dice__dot:nth-child(2) {
-      bottom: 0.5em;
-    }
-    .dice__dot:nth-child(3) {
-      right: 0.5em;
-    }
-    .dice__dot:last-child {
-      bottom: 0.5em;
-      right: 0.5em;
-    }
     transform: rotateY(-90deg) translateZ(1.5em);
   }
   &:nth-child(5) {
-    .dice__dot:nth-child(2) {
-      bottom: 0.5em;
-    }
-    .dice__dot:nth-child(3) {
-      right: 0.5em;
-    }
-    .dice__dot:nth-child(4) {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .dice__dot:last-child {
-      bottom: 0.5em;
-      right: 0.5em;
-    }
     transform: rotateX(90deg) translateZ(1.5em);
   }
   &:nth-child(6) {
-    .dice__dot:nth-child(2) {
-      bottom: 0.5em;
-    }
-    .dice__dot:nth-child(3) {
-      right: 0.5em;
-    }
-    .dice__dot:nth-child(4) {
-      top: 50%;
-      right: 0.5em;
-      transform: translateY(-50%);
-    }
-    .dice__dot:nth-child(5) {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .dice__dot:last-child {
-      bottom: 0.5em;
-      right: 0.5em;
-    }
     transform: rotateX(-90deg) translateZ(1.5em);
   }
 }
+
+.v-icon {
+  font-size: 4em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .dice__dot {
   width: 0.55em;
   height: 0.55em;

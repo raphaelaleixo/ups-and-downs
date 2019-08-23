@@ -4,8 +4,12 @@
     :class="'square--' + square.type"
     :style="{ 'grid-area': 'square' + square.number }"
   >
-    <v-icon color="#ffffff80" class="square__icon" x-large v-if="icon">{{icon}}</v-icon>
-    <span v-if="!square.to" class="square__number">{{ squareText }}</span>
+    <v-icon color="#ffffff80" class="square__icon" x-large v-if="icon">{{
+      icon
+    }}</v-icon>
+    <span v-if="!square.to && square.type !== 'goal'" class="square__number">{{
+      square.number
+    }}</span>
     <span v-if="square.to" class="square__number square__to">{{
       square.to
     }}</span>
@@ -18,19 +22,15 @@ export default {
     square: Object
   },
   computed: {
-    squareText() {
-      return this.square.type === "goal" ? "Goal" : this.square.number;
-    },
     icon() {
-      if (this.square.type==='higher') {
-        return 'mdi-arrow-up-bold'
-      }
-      else if (this.square.type==='lower') {
-        return 'mdi-arrow-down-bold'
-      } else if (this.square.type==='goal') {
-        return 'mdi-flag-checkered'
+      if (this.square.type === "higher") {
+        return "mdi-arrow-up-bold";
+      } else if (this.square.type === "lower") {
+        return "mdi-arrow-down-bold";
+      } else if (this.square.type === "goal") {
+        return "mdi-flag-checkered";
       } else {
-        return false
+        return false;
       }
     }
   }
@@ -42,7 +42,7 @@ export default {
   background-color: $color;
   color: darken($color, 50%);
 
-  &:nth-child(even) {
+  &:nth-child(even):not(.square--goal) {
     background-color: rgba($color, 0.7);
   }
 }
@@ -67,6 +67,7 @@ export default {
   position: absolute;
 }
 .square--goal {
+  background: darken(#e6cb00, 10%);
   .square__number {
     top: 50%;
     left: 50%;
@@ -75,11 +76,14 @@ export default {
   }
 }
 .square__icon {
-  position:absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 1.25em;
+  font-size: 2em;
   transform: translate(-50%, -50%);
+  &:before {
+    font-size: 2em;
+  }
 }
 .square__to {
   color: darken(#00cecb, 20%);
@@ -92,5 +96,4 @@ export default {
 .square--lower .square__to {
   color: darken(#ff5e5b, 40%);
 }
-
 </style>

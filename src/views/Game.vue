@@ -2,7 +2,7 @@
   <v-container>
     <v-row justify="space-between">
       <v-col cols="12" md="3">
-        <game-ranking :game="game" :defs="defs" v-if="game.players" />
+        <game-dice :game="game" :defs="defs" v-if="game.dice" />
       </v-col>
       <v-col cols="12" md="5">
         <v-card>
@@ -12,9 +12,7 @@
         </v-card>
       </v-col>
       <v-col cols="12" md="3">
-        <game-dice :game="game"
-          :defs="defs"
-        v-if="game.dice" />
+        <game-ranking :game="game" :defs="defs" v-if="game.players" />
       </v-col>
     </v-row>
   </v-container>
@@ -23,7 +21,7 @@
 <script>
 import GameBoard from "@/components/GameBoard";
 import GameRanking from "@/components/GameRanking";
-import GameDice from '@/components/GameDice';
+import GameDice from "@/components/GameDice";
 import rules from "@/api/rules";
 import { mapState } from "vuex";
 import { mapActions } from "vuex";
