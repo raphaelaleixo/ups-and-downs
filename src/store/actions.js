@@ -30,10 +30,7 @@ export default {
   },
   updatePlayerStatus: async (context, payload) => {
     const actualPlayer = database.ref(
-      "/" +
-        payload.game.gamekey +
-        "/players/" +
-        (parseInt(payload.player.number) - 1)
+      "/" + payload.game.gamekey + "/players/" + (parseInt(payload.player) - 1)
     );
     await actualPlayer.on("value", snapshot => {
       if (snapshot.val() === false) {
@@ -66,8 +63,9 @@ export default {
       payload.numberOfPlayers,
       gamekey
     );
-    await game.set(gameData);
-    context.commit("SET_GAME", gameData);
-    context.dispatch("loadGame", gameData.gameId);
+    game.set(gameData).then(() => {
+      context.commit("SET_GAME", gameData);
+      context.dispatch("loadGame", gameData.gameId);
+    });
   }
 };

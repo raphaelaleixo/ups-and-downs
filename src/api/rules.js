@@ -53,9 +53,9 @@ export default {
         if (higherOrLower) {
           let compareArray, numberToShift;
 
-          // If we're looking for a lower number, then we'll create a array with
+          // If we're looking for a lower number, then we'll create an array with
           // all numbers that are lower than the number we're comparing with,
-          // if its higher, we're doing the oposite.
+          // if i'ts higher, we're doing the opposite.
           if (higherOrLower === "lower") {
             // First we create a array with enough empty slots
             // using Array(N)
@@ -65,11 +65,10 @@ export default {
             compareArray = Array(totalSquares - numberToCompare);
             numberToShift = numberToCompare;
           }
-          compareArray
+          // Then we fill each empty slot with the right numbers
+          compareArray = compareArray
             .fill()
-            // Then we fill each empty slot with the right numbers
             .map((v, i) => i + 1 + numberToShift);
-
           // Lastly, if every number was already chosen, return false,
           // forcing to discard the first number.
           if (compareArray.every(item => specialSquares.includes(item))) {
@@ -143,7 +142,7 @@ export default {
       };
     };
 
-    // Our game object, with the fixed and dynamic properties.
+    // Our game object, with fixed and dynamic properties.
     return {
       numberOfPlayers,
       base,

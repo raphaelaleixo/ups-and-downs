@@ -18,12 +18,16 @@ const router = new Router({
       path: "/game/:id",
       name: "game",
       component: () => import("./views/Game.vue")
+    },
+    {
+      path: "/game/:id/:player",
+      name: "player",
+      component: () => import("./views/Player.vue")
+    },
+    {
+      path: "*",
+      redirect: { name: "home" }
     }
-    // {
-    //   path: '/game/:id/:player',
-    //   name: 'player',
-    //   component: () => import('./views/Player.vue'),
-    // },
   ]
 });
 
