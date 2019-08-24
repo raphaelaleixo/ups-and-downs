@@ -15,6 +15,8 @@ export default {
 .piece {
   transition: all 0.5s;
   position: relative;
+  height: 0;
+  padding-bottom: 100%;
 }
 
 .piece--active {

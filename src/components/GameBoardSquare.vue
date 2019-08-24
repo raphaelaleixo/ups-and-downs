@@ -47,14 +47,16 @@ export default {
   }
 }
 .board__square {
-  padding: 0.5em;
+  padding: 0;
   font-size: 0.8em;
   font-weight: bolder;
   text-transform: uppercase;
   position: relative;
   letter-spacing: -1px;
   overflow: hidden;
-  border: 2px solid darken(#ffed66, 25%);
+  height: 0;
+  padding-bottom: 100%;
+  box-shadow: inset 0 0 0 2px darken(#ffed66, 25%);
   @include square(#ffed66);
 }
 .square--higher {
@@ -65,6 +67,9 @@ export default {
 }
 .square__number {
   position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  word-break: normal;
 }
 .square--goal {
   background: darken(#e6cb00, 10%);
@@ -82,7 +87,7 @@ export default {
   font-size: 2em;
   transform: translate(-50%, -50%);
   &:before {
-    font-size: 2em;
+    font-size: 1em;
   }
 }
 .square__to {

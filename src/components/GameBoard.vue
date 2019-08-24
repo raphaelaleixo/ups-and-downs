@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      class="board board--base"
-      :style="{ 'grid-template-areas': boardGrid }"
-    >
+    <div class="board board--base" :style="gridStyle">
       <game-board-square
         :square="square"
         v-for="square in game.board.squares"
@@ -14,7 +11,7 @@
       name="move-piece"
       tag="div"
       class="board"
-      :style="{ 'grid-template-areas': boardGrid }"
+      :style="gridStyle"
     >
       <game-board-piece
         v-for="player in game.players"
@@ -63,6 +60,13 @@ export default {
         grid += boardRow;
       }
       return grid;
+    },
+    gridStyle() {
+      return {
+        "grid-template-areas": this.boardGrid,
+        "grid-template-columns": `repeat(${this.game.base},1fr)`,
+        "grid-template-rows": `repeat(${this.game.base},1fr)`
+      };
     }
   }
 };
@@ -75,12 +79,11 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 3px;
-  overflow: hidden;
   border: 2px solid darken(#ffed66, 25%);
-  &.board--base {
-    box-shadow: 0 0 0.25em 0 #00000040, 0 0 2em 0 #00000020;
-  }
+  grid-template: auto / auto;
   &:not(.board--base) {
     pointer-events: none;
   }

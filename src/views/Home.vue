@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="7">
         <v-alert type="error" dismissible v-if="hasError">
-          {{errorText}}
+          {{ errorText }}
         </v-alert>
       </v-col>
       <v-col cols="12" md="6">
@@ -15,7 +15,6 @@
         <game-settings />
       </v-col>
     </v-row>
-
   </v-container>
 </template>
 
@@ -31,9 +30,9 @@ export default {
     },
     errorText() {
       if (this.hasError === "game") {
-        return 'The game you tried to join does not exist.'
+        return "The game you tried to join does not exist.";
       } else {
-        return 'The game you tried to join does not support that number of players.'
+        return "The game you tried to join does not support that number of players.";
       }
     }
   }

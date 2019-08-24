@@ -22,7 +22,7 @@
       absolute
       bottom
       indeterminate
-      :color="defs.playerColors[actualPlayer -1]"
+      :color="defs.playerColors[actualPlayer - 1]"
     ></v-progress-linear>
   </v-card>
 </template>

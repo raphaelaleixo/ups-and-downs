@@ -1,7 +1,9 @@
 <template>
   <v-card dark :color="myColor" class="my-5 mx-auto" width="30em">
     <v-card-title>Player {{ activePlayer }}</v-card-title>
-    <v-card-text v-if="this.actualPlayer == this.activePlayer">It's your turn!</v-card-text>
+    <v-card-text v-if="this.actualPlayer == this.activePlayer"
+      >It's your turn!</v-card-text
+    >
     <v-card-text v-else>It's Player {{ actualPlayer }}'s turn</v-card-text>
     <v-card-actions>
       <v-btn
